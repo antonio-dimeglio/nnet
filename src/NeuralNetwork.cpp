@@ -1,6 +1,8 @@
 #include "../include/nnet/NeuralNetwork.hpp"
 
-NeuralNetwork::NeuralNetwork(std::vector<size_t> shape, float alpha, std::function<float (float)> activation_function) : 
+NeuralNetwork::NeuralNetwork(std::vector<size_t> shape, 
+float alpha, 
+std::vector<std::function<float (float)>> activation_functions) : 
     m_alpha(alpha){
     if (shape.size() < 2){
         throw InvalidNeuralNetworkShapeException();
@@ -8,7 +10,7 @@ NeuralNetwork::NeuralNetwork(std::vector<size_t> shape, float alpha, std::functi
 
     for (int i = 1; i < shape.size(); i++){
         m_layers.push_back(
-            Layer(shape[i-1], shape[i], activation_function)
+            Layer(shape[i-1], shape[i], activation_functions[i-i])
         );
     }
 }

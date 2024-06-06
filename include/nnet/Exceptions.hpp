@@ -12,3 +12,8 @@ class InvalidNeuralNetworkShapeException : public std::runtime_error{
     public:
         InvalidNeuralNetworkShapeException(): std::runtime_error("Cannot create neural network with the shapes provided."){};
 };
+
+class ActivationShapeMismatchException : public std::runtime_error{
+    public:
+        ActivationShapeMismatchException(): std::runtime_error("Cannot create neural network with activation functions vector and shape vector with different sizes."){};
+};
